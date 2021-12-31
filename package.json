@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "axios": "^0.24.0",
+    "mdbreact": "^5.2.0",
+    "react-bootstrap": "^2.0.3",
+    "react-table": "^7.7.0",
+    "reactstrap": "^9.0.1",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +36,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "proxy": "ec2-3-144-93-241.us-east-2.compute.amazonaws.com",
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "mdbreact": "^5.2.0",
+    "react-bootstrap": "^2.0.3",
+    "react-table": "^7.7.0",
+    "reactstrap": "^9.0.1",
+    "styled-components": "^5.3.3"
   }
 }
