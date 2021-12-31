@@ -37,7 +37,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "ec2-3-144-93-241.us-east-2.compute.amazonaws.com",
+  "proxy": "ec2-3-135-25-144.us-east-2.compute.amazonaws.com",
   "devDependencies": {
     "axios": "^0.24.0",
     "mdbreact": "^5.2.0",
