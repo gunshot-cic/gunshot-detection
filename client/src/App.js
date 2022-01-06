@@ -7,6 +7,7 @@ import axios from "axios";
 
 function App() {
   const url = "/api/incidents/";
+  const url2 = "/api/devices/";
 
   const [tableData, setTableData] = useState([]);
 
@@ -37,27 +38,57 @@ function App() {
     },
   ];
 
-  const getIncidents = () => {
-    axios
+  const getIncidentsAndDevices = async () => {
+    let deviceLocations = await axios
+      .get(url2, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          let data = response.data.devices;
+          let rtnObj = {};
+          for (let obj of data) {
+            let device_id = obj.device_details.device_id;
+            let coordinates = obj.device_details.coordinates;
+            rtnObj[device_id] = coordinates;
+          }
+          return rtnObj;
+        }
+      });
+    await axios
       .get(url, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
       })
-      .then(function (response) {
+      .then((response) => {
         if (response.status === 200) {
           let data = response.data.incidents;
+          let coordinate_data = "";
           data = data.map((obj) => {
-            let lat = obj.device_data.uplink_message.locations.user.latitude;
-            let lon = obj.device_data.uplink_message.locations.user.longitude;
             let eventDate = new Date(Math.trunc(obj.sample_time / 1000) * 1000);
-            return {
-              eventDate: `${eventDate.toDateString()}, ${eventDate.toTimeString()}`,
-              deviceId: obj.device_id,
-              coordinates: `${lat},${lon}`,
-              link: `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`,
-            };
+            if (obj.device_id in deviceLocations) {
+              coordinate_data = deviceLocations[obj.device_id];
+              return {
+                eventDate: `${eventDate.toDateString()}, ${eventDate.toTimeString()}`,
+                deviceId: obj.device_id,
+                coordinates: coordinate_data,
+                link: `https://www.google.com/maps/search/?api=1&query=${coordinate_data}`,
+              };
+            } else {
+              let lat = obj.device_data.uplink_message.locations.user.latitude;
+              let lon = obj.device_data.uplink_message.locations.user.longitude;
+              return {
+                eventDate: `${eventDate.toDateString()}, ${eventDate.toTimeString()}`,
+                deviceId: obj.device_id,
+                coordinates: `${lat},${lon}`,
+                link: `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`,
+              };
+            }
           });
           setTableData(data);
         }
@@ -65,9 +96,9 @@ function App() {
   };
 
   useEffect(() => {
-    getIncidents();
+    getIncidentsAndDevices();
     const interval = setInterval(() => {
-      getIncidents();
+      getIncidentsAndDevices();
     }, MINUTE_MS);
 
     return () => clearInterval(interval);

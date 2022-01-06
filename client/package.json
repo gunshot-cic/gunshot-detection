@@ -37,7 +37,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "ec2-3-135-25-144.us-east-2.compute.amazonaws.com",
+  "proxy": "http://localhost:8080",
   "devDependencies": {
     "axios": "^0.24.0",
     "mdbreact": "^5.2.0",

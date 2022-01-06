@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/incidents.routes")(app);
+require("./app/routes/devices.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
