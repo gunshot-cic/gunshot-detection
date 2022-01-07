@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 
 const app = express();
 
@@ -18,8 +17,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from gunshot project!" });
 });
 
-require("./app/routes/incidents.routes")(app);
-require("./app/routes/devices.routes")(app);
+require("./server/app/routes/incidents.routes")(app);
+require("./server/app/routes/devices.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
