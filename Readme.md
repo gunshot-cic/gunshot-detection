@@ -20,9 +20,10 @@
 1. Navigate to https://gunshot.signin.aws.amazon.com/console and login with the respective IAM user credentials.
 2. Search for DynamoDB and navigate to its respective dashboard.
 3. Click on `tables` in the left hand menu and search for the table `device_locations` and click on it.
-4. Click on view items in the table dashboard.
-5. Click on create item and select JSON.
+4. Click on `view items` in the table dashboard.
+5. Click on `create item` and select `JSON`.
 6. Add the corresponding device id and coordinate of the device as shown below.
+```
     {
       "id": {
         "N": "0" (Increment the ID by 1 for every device you add)
@@ -38,7 +39,8 @@
         }
       }
     }
-7. Save the item.
+```
+7. Click on `create item`.
   
 
 
