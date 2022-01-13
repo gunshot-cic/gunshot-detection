@@ -16,4 +16,29 @@
 2. Store IoT device data in DynamoDB table: https://docs.aws.amazon.com/iot/latest/developerguide/iot-ddb-rule.html
 3. Send Amazon SNS notification: https://docs.aws.amazon.com/iot/latest/developerguide/iot-sns-rule.html
 
+# Add LoRa end device to DynamoDB table
+1. Navigate to https://gunshot.signin.aws.amazon.com/console and login with the respective IAM user credentials.
+2. Search for DynamoDB and navigate to its respective dashboard.
+3. Click on `tables` in the left hand menu and search for the table `device_locations` and click on it.
+4. Click on view items in the table dashboard.
+5. Click on create item and select JSON.
+6. Add the corresponding device id and coordinate of the device as shown below.
+    {
+      "id": {
+        "N": "0" (Increment the ID by 1 for every device you add)
+      },
+      "device_details": {
+        "M": {
+          "device_id": {
+            "S": "AC1F09FFFE05705E" (Replace this string with the corresponding device ID)
+          },
+          "coordinates": {
+            "S": "33.409872,-111.9226166" (Add coordinates in the format latitude,longitude)
+          }
+        }
+      }
+    }
+7. Save the item.
+  
+
 
