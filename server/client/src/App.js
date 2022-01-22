@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/devices" element={<DeviceInfo />} />
+          <Route path="/device-info" element={<DeviceInfo />} />
         </Routes>
       </Router>
     </div>

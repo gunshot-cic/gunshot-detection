@@ -6,7 +6,7 @@ const NavigationBar = () => (
     <Container>
     <Navbar.Brand href="/">Gunshot Detection</Navbar.Brand>
       <Nav className="me-auto">
-        <Nav.Link href="/devices">Devices</Nav.Link>
+        <Nav.Link href="/device-info">Devices</Nav.Link>
       </Nav>
     </Container>
   </Navbar>
