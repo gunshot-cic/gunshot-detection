@@ -1,24 +1,15 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
-import styled from "styled-components";
-const Styles = styled.div`
-  .navbar {
-    background-color: #222;
-  }
-  .navbar-brand {
-    font-size: 1.4em;
-    color: #9fffcb;
-    &:hover {
-      color: white;
-    }
-  }
-`;
+import { Navbar, Container, Nav } from "react-bootstrap";
+
 const NavigationBar = () => (
-  <Styles>
-    <Navbar expand="lg">
-      <Navbar.Brand>Gunshot Detection</Navbar.Brand>
-    </Navbar>
-  </Styles>
+  <Navbar bg="dark" variant="dark">
+    <Container>
+    <Navbar.Brand href="/">Gunshot Detection</Navbar.Brand>
+      <Nav className="me-auto">
+        <Nav.Link href="/devices">Devices</Nav.Link>
+      </Nav>
+    </Container>
+  </Navbar>
 );
 
 export default NavigationBar;
