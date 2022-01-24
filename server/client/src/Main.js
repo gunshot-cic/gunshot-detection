@@ -70,9 +70,10 @@ const Main = () => {
           data = data.map((obj) => {
             let eventDate = new Date(Math.trunc(obj.sample_time / 1000) * 1000);
             coordinate_data = deviceLocations[obj.device_id];
+            const deviceId = obj.device_data.end_device_ids.device_id;
               return {
                 eventDate: `${eventDate.toDateString()}, ${eventDate.toTimeString()}`,
-                deviceId: obj.device_id,
+                deviceId: deviceId,
                 coordinates: coordinate_data,
                 link: `https://www.google.com/maps/search/?api=1&query=${coordinate_data}`,
               };

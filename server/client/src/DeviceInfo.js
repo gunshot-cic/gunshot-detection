@@ -27,6 +27,10 @@ const DeviceInfo = () => {
             Header: "RSSI",
             accessor: "rssi",
         },
+        {
+            Header: "Time",
+            accessor: "time",
+        },
     ];
 
 
@@ -59,7 +63,10 @@ const DeviceInfo = () => {
             .then((response) => {
                 if (response.status === 200) {
                     let data = response.data.incidents;
+                    let fake = data.filter((obj) => !deviceList.includes(obj.device_id));
+                    console.log(fake);
                     data = data.filter((obj) => deviceList.includes(obj.device_id));
+                    console.log(data)
                     // let result = data.reduce((res, curr) => {
                     //     let exists = res.findIndex(x => x.device_id === curr.device_id);
 
@@ -74,6 +81,8 @@ const DeviceInfo = () => {
                     data = data.map((obj) => {
                         const snr = obj.device_data.uplink_message.rx_metadata[0].snr;
                         const rssi = obj.device_data.uplink_message.rx_metadata[0].rssi;
+                        const deviceId = obj.device_data.end_device_ids.device_id;
+                        const time = obj.device_data.received_at;
                         let voltage = ''
                         if (obj.device_data.uplink_message.frm_payload) {
                             voltage = Buffer.from(obj.device_data.uplink_message.frm_payload, 'base64').toString('ascii');
@@ -82,9 +91,10 @@ const DeviceInfo = () => {
                         }
                         return {
                             batteryVoltage: voltage,
-                            deviceId: obj.device_id,
+                            deviceId: deviceId,
                             snr: snr,
-                            rssi: rssi
+                            rssi: rssi,
+                            time: time
                         };
                     });
 
