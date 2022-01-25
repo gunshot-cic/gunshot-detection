@@ -63,21 +63,7 @@ const DeviceInfo = () => {
             .then((response) => {
                 if (response.status === 200) {
                     let data = response.data.incidents;
-                    let fake = data.filter((obj) => !deviceList.includes(obj.device_id));
-                    console.log(fake);
                     data = data.filter((obj) => deviceList.includes(obj.device_id));
-                    console.log(data)
-                    // let result = data.reduce((res, curr) => {
-                    //     let exists = res.findIndex(x => x.device_id === curr.device_id);
-
-                    //     if (exists < 0)
-                    //         res.push(curr);
-                    //     else if (res[exists].sample_time < curr.sample_time)
-                    //         res[exists] = curr;
-
-                    //     return res;
-                    // }, []);
-
                     data = data.map((obj) => {
                         const snr = obj.device_data.uplink_message.rx_metadata[0].snr;
                         const rssi = obj.device_data.uplink_message.rx_metadata[0].rssi;
@@ -97,6 +83,8 @@ const DeviceInfo = () => {
                             time: time
                         };
                     });
+
+                    data = data.filter((obj) => obj.batteryVoltage.match(/^-?\d+\.?\d*$/) != null)
 
                     setTableData(data);
                 }
