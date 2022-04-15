@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 app.get("/", (req, res) => {
-  res.redirect("index.html");
+  res.send("<h1>GUNSHOT SITE UNDER CONSTRUCTION!</h1>");
 });
 
 require("./server/app/routes/incidents.routes")(app);

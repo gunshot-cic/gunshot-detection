@@ -5,6 +5,7 @@ module.exports = (app) => {
 
   // get all incidents
   router.get("/", incident.getIncidents);
+  router.get("/test", incident.incidentTest);
   router.post("/upload", incident.uploadIncident);
 
   app.use("/api/incidents", router);

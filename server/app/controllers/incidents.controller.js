@@ -1,6 +1,12 @@
 const AWS = require("aws-sdk");
 const config = require("../../config");
 
+exports.incidentTest = (req, res) => {
+  res.json({
+    message: "success test api",
+  });
+};
+
 exports.getIncidents = (req, res) => {
   AWS.config.update(config.aws_remote_config);
 
