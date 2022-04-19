@@ -41,6 +41,7 @@ exports.uploadIncident = (req, res) => {
   AWS.config.update(config.aws_remote_config);
 
   const docClient = new AWS.DynamoDB.DocumentClient();
+  console.log("DOC CLIENT ", docClient);
 
   const params = {
     TableName: config.aws_table_name,
