@@ -43,12 +43,13 @@ require("./server/app/passport/routes.js")(app, passport); // load our routes an
 require("./server/app/routes/incidents.routes")(app);
 require("./server/app/routes/devices.routes")(app);
 
+// Server client (static files)
+app.use(express.static(path.join(__dirname, "server/app/public")));
+
 app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
 
-// Server client (static files)
-app.use(express.static(path.join(__dirname, "server/app/public")));
 // DO NOT DO app.listen() unless we're testing this directly
 if (require.main === module) {
   console.log("RUNNING");
