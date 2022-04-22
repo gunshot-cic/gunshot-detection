@@ -41,7 +41,6 @@ exports.uploadIncident = (req, res) => {
   AWS.config.update(config.aws_remote_config);
 
   const docClient = new AWS.DynamoDB.DocumentClient();
-  console.log("DOC CLIENT ", docClient);
 
   const params = {
     TableName: config.aws_table_name,
@@ -52,14 +51,19 @@ exports.uploadIncident = (req, res) => {
     },
   };
 
+  console.log("PARAMS", params);
+
   docClient.put(params, function (err, data) {
     if (err) {
       console.log(err);
       res.json({
+        message: "Failed to inserted item into table",
         success: false,
       });
     } else {
+      console.log("SUCCESS");
       res.json({
+        message: "Successfully inserted item into table",
         success: true,
       });
     }
