@@ -37,8 +37,8 @@ app.use(methodOverride());
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
-require("./passport/config/passport")(passport); // pass passport for configuration
-require("./passport/routes.js")(app, passport); // load our routes and pass in our app and fully configured passport
+require("./server/app/passport/config/passport")(passport); // pass passport for configuration
+require("./server/app/passport/routes.js")(app, passport); // load our routes and pass in our app and fully configured passport
 
 require("./server/app/routes/incidents.routes")(app);
 require("./server/app/routes/devices.routes")(app);
