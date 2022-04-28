@@ -10,7 +10,9 @@ var express = require("express");
 var dbURL = "mongodb://127.0.0.1:27017/gunshot_db";
 var db = require("mongoskin").db(dbURL);
 var mongoose = require("mongoose");
-mongoose.connect(dbURL);
+mongoose.connect(dbURL, () => {
+  console.log("Mongo Connected");
+});
 
 var app = express();
 
