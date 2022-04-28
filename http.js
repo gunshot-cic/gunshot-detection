@@ -7,7 +7,7 @@ var querystring = require("querystring");
 var path = require("path");
 var express = require("express");
 
-var dbURL = "mongodb://44.224.57.0:27017/gunshot_db";
+var dbURL = "mongodb://127.0.0.1:27017/gunshot_db";
 var db = require("mongoskin").db(dbURL);
 var mongoose = require("mongoose");
 mongoose.connect(dbURL);
