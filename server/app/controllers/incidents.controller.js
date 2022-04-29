@@ -34,24 +34,38 @@ exports.getIncidents = (req, res) => {
 };
 
 exports.uploadIncident = (req, res) => {
+  let s3url = "";
   const device_id = req.body.device_id;
-  const s3url = req.body.s3_url;
   const notification = req.body.notification;
+
+  if (req.body.s3_url) {
+    s3url = req.body.s3_url;
+  }
 
   AWS.config.update(config.aws_remote_config);
 
   const docClient = new AWS.DynamoDB.DocumentClient();
 
-  const params = {
-    TableName: config.aws_table_name,
-    Item: {
-      device_id: device_id,
-      s3_url: s3url,
-      notification: notification,
-    },
-  };
+  let params = {};
 
-  console.log("PARAMS", params);
+  if (s3url !== "") {
+    params = {
+      TableName: config.aws_table_name,
+      Item: {
+        device_id: device_id,
+        s3_url: s3url,
+        notification: notification,
+      },
+    };
+  } else {
+    params = {
+      TableName: config.aws_table_2_name,
+      Item: {
+        device_id: device_id,
+        notification: notification,
+      },
+    };
+  }
 
   docClient.put(params, function (err, data) {
     if (err) {
