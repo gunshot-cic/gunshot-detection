@@ -30,6 +30,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 var flash = require("express-flash");
 app.use(flash());
 
