@@ -49,8 +49,7 @@ require("./server/app/routes/devices.routes")(app);
 app.use(express.static(path.join(__dirname, "server/app/public")));
 
 app.get("/", (req, res) => {
-  // res.sendFile("index.html");
-  res.send(res.json({ message: "success" }));
+  res.sendFile("home.html");
 });
 
 // DO NOT DO app.listen() unless we're testing this directly
