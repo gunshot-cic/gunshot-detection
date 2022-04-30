@@ -46,7 +46,7 @@ require("./server/app/passport/routes.js")(app, passport); // load our routes an
 
 require("./server/app/routes/incidents.routes")(app);
 require("./server/app/routes/devices.routes")(app);
-require("./routes/sns.routes")(app);
+require("./server/app/routes/sns.routes")(app);
 
 // Server client (static files)
 app.use(express.static(path.join(__dirname, "server/app/public")));
