@@ -49,6 +49,7 @@ exports.uploadIncident = (req, res) => {
   let params = {};
 
   if (s3url !== "") {
+    console.log("gunshot detected!");
     params = {
       TableName: config.aws_table_name,
       Item: {
@@ -60,6 +61,7 @@ exports.uploadIncident = (req, res) => {
       },
     };
   } else {
+    console.log("Booting devices!");
     params = {
       TableName: config.aws_table_2_name,
       Item: {
