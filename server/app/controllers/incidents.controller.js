@@ -48,6 +48,8 @@ exports.uploadIncident = (req, res) => {
 
   let params = {};
 
+  console.log("TESTTEST", req.body);
+
   if (s3url !== "") {
     console.log("gunshot detected!");
     params = {
