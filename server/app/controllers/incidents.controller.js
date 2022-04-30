@@ -65,6 +65,7 @@ exports.uploadIncident = (req, res) => {
       Item: {
         device_id: device_id,
         notification: notification,
+        timestamp: Date.now(),
       },
     };
   }
