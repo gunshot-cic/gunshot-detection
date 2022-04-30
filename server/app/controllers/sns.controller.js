@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const config = require("../config");
+const config = require("../../config");
 
 exports.subscribe = (req, res) => {
   const number = req.body.number;
