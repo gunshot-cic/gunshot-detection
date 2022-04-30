@@ -73,16 +73,9 @@ exports.uploadIncident = (req, res) => {
   docClient.put(params, function (err, data) {
     if (err) {
       console.log(err);
-      res.json({
-        message: "Failed to inserted item into table",
-        success: false,
-      });
+      console.log("\nFailed added item to the table");
     } else {
-      console.log("SUCCESS");
-      res.json({
-        message: "Successfully inserted item into table",
-        success: true,
-      });
+      console.log("\nSuccessfully added item to the table");
     }
   });
 };
