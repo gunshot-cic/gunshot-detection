@@ -19,7 +19,7 @@ module.exports = function (app, passport) {
   app.post(
     "/tryLogin",
     passport.authenticate("local-login", {
-      successRedirect: "/home.html", // redirect to the secure profile section
+      successRedirect: "/index.html", // redirect to the secure profile section
       failureRedirect: "/login.html#fail", // redirect back to the signup page if there is an error
       failureFlash: true, // allow flash messages
     })
@@ -29,7 +29,7 @@ module.exports = function (app, passport) {
   app.post(
     "/tryRegister",
     passport.authenticate("local-signup", {
-      successRedirect: "/home.html", // redirect to the secure profile section
+      successRedirect: "/index.html", // redirect to the secure profile section
       failureRedirect: "/login.html#failReg", // redirect back to the signup page if there is an error
       failureFlash: true, // allow flash messages
     })

@@ -55,6 +55,8 @@ exports.uploadIncident = (req, res) => {
         device_id: device_id,
         s3_url: s3url,
         notification: notification,
+        timestamp: Date.now(),
+        is_processed: false,
       },
     };
   } else {

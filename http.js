@@ -2,12 +2,13 @@ const cors = require("cors");
 var url = require("url");
 var passport = require("passport");
 var fs = require("fs");
+var config = require("./server/config");
 
 var querystring = require("querystring");
 var path = require("path");
 var express = require("express");
 
-var dbURL = "mongodb://44.224.57.0:27017/gunshot_db";
+var dbURL = config.db_url;
 var db = require("mongoskin").db(dbURL);
 var mongoose = require("mongoose");
 mongoose.connect(dbURL, () => {
@@ -45,13 +46,13 @@ require("./server/app/passport/routes.js")(app, passport); // load our routes an
 
 require("./server/app/routes/incidents.routes")(app);
 require("./server/app/routes/devices.routes")(app);
+require("./routes/sns.routes")(app);
 
 // Server client (static files)
 app.use(express.static(path.join(__dirname, "server/app/public")));
 
 app.get("/", (req, res) => {
-  // res.sendFile("home.html");
-  res.send("<h1>Hello Express!</h1>");
+  res.sendFile("home.html");
 });
 
 // DO NOT DO app.listen() unless we're testing this directly
