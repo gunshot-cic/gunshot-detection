@@ -17,7 +17,7 @@ function subscribe() {
     number: number,
   };
 
-  fetch("http://localhost:8080/api/sns/subscribe", {
+  fetch("https://asucic-gunshotdetection/api/sns/subscribe", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -38,7 +38,7 @@ function unsubscribe() {
     number: number,
   };
 
-  fetch("http://localhost:8080/api/sns/unsubscribe", {
+  fetch("https://asucic-gunshotdetection/api/sns/unsubscribe", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
