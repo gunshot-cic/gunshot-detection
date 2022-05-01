@@ -29,7 +29,16 @@ exports.subscribe = (req, res) => {
         if (err) {
           console.log("\n", err);
           console.log("\nfailed to add item to table");
-        } else console.log("\nSuccessfully added item to table");
+          res.json({
+            success: false,
+            message: err,
+          });
+        } else {
+          console.log("\nSuccessfully added item to table");
+          res.json({
+            success: true,
+          });
+        }
       });
     }
   });
@@ -49,8 +58,16 @@ exports.unsubscribe = (req, res) => {
     if (err) {
       console.log("\n", err);
       console.log("\nfailed to get item from table");
+      res.json({
+        success: false,
+        message: err,
+      });
     } else {
       console.log("\nSuccessfully got item from table");
+      res.json({
+        success: true,
+        item: data.Item,
+      });
       subscriptionArn = data.Item.subscription_arn;
       let params1 = {
         SubscriptionArn: subscriptionArn,
@@ -63,7 +80,16 @@ exports.unsubscribe = (req, res) => {
             if (err) {
               console.log("\n", err);
               console.log("\nfailed to remove item from table");
-            } else console.log("\nSuccessfully removed item from table");
+              res.json({
+                success: false,
+                message: err,
+              });
+            } else {
+              console.log("\nSuccessfully removed item from table");
+              res.json({
+                success: true,
+              });
+            }
           });
         }
       });

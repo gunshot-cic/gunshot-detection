@@ -48,8 +48,6 @@ exports.uploadIncident = (req, res) => {
 
   let params = {};
 
-  console.log("TESTTEST", req.body);
-
   if (s3url !== "") {
     console.log("gunshot detected!");
     params = {
@@ -78,8 +76,15 @@ exports.uploadIncident = (req, res) => {
     if (err) {
       console.log(err);
       console.log("\nFailed added item to the table");
+      res.json({
+        success: false,
+        message: err,
+      });
     } else {
       console.log("\nSuccessfully added item to the table");
+      res.json({
+        success: true,
+      });
     }
   });
 };
