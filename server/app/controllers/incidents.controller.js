@@ -85,6 +85,15 @@ exports.uploadIncident = (req, res) => {
       res.json({
         success: true,
       });
+      const lambda = new AWS.Lambda();
+      params = {
+        FunctionName: "publishMessages" /* required */,
+        Payload: JSON.stringify({ lat: 28.7041, long: 77.1025 }),
+      };
+      lambda.invoke(params, function (err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else console.log("INVOKED LAMBDA ", data); // successful response
+      });
     }
   });
 };
