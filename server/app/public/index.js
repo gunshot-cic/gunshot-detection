@@ -55,8 +55,8 @@ function unsubscribe() {
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
-      let subAlert = new bootstrap.Toast(unsubToast); //inizialize it
-      subAlert.show();
+      let unsubAlert = new bootstrap.Toast(unsubToast); //inizialize it
+      unsubAlert.show();
     });
 
   el.value = "";
