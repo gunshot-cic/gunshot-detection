@@ -63,7 +63,7 @@ exports.unsubscribe = (req, res) => {
         message: err,
       });
     } else {
-      if (data) {
+      if (data !== null) {
         console.log("\nSuccessfully got item from table");
 
         subscriptionArn = data.Item.subscription_arn;
