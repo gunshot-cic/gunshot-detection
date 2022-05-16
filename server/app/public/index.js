@@ -20,7 +20,7 @@ function subscribe() {
     number: number,
   };
 
-  fetch("https://asucic-gunshotdetection.com:8080/api/sns/subscribe", {
+  fetch("https://asucic-gunshotdetection.com/api/sns/subscribe", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -45,7 +45,7 @@ function unsubscribe() {
     number: number,
   };
 
-  fetch("https://asucic-gunshotdetection.com:8080/api/sns/unsubscribe", {
+  fetch("https://asucic-gunshotdetection.com/api/sns/unsubscribe", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -66,7 +66,7 @@ let markers = [];
 let locations = [];
 
 function getLocations() {
-  fetch("https://asucic-gunshotdetection.com:8080/api/incidents/locations", {
+  fetch("https://asucic-gunshotdetection.com/api/incidents/locations", {
     method: "GET",
   })
     .then((response) => response.json())
