@@ -100,6 +100,15 @@ exports.uploadIncident = (req, res) => {
 };
 
 exports.getLocations = (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://asucic-gunshotdetection.com:8080"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
   AWS.config.update(config.aws_remote_config);
 
   const docClient = new AWS.DynamoDB.DocumentClient();
