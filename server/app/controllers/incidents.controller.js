@@ -110,12 +110,14 @@ exports.getLocations = (req, res) => {
 
   docClient.scan(params, function (err, data) {
     if (err) {
+      console.log("ERROR!");
       console.log(err);
       res.json({
         success: false,
         message: err,
       });
     } else {
+      console.log("GOT LOCATIONS!");
       const { Items } = data;
       res.json({
         success: true,
