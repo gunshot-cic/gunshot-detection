@@ -63,7 +63,7 @@ exports.uploadIncident = (req, res) => {
   } else {
     console.log("Booting devices!");
     params = {
-      TableName: config.aws_table_2_name,
+      TableName: config.aws_table_4_name,
       Item: {
         device_id: device_id,
         notification: notification,
