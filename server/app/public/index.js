@@ -61,7 +61,7 @@ function unsubscribe() {
         unsubAlert.show();
       } else {
         let unsubAlert1 = new bootstrap.Toast(unsubToast1); //inizialize it
-        unsubAlert.show();
+        unsubAlert1.show();
       }
     });
 
