@@ -100,6 +100,7 @@ exports.uploadIncident = (req, res) => {
 };
 
 exports.getLocations = (req, res) => {
+  console.log("GOT HERE");
   AWS.config.update(config.aws_remote_config);
 
   const docClient = new AWS.DynamoDB.DocumentClient();
