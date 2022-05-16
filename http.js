@@ -31,11 +31,16 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+
+let allowCrossDomain = function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "example.com");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  next();
+};
+app.use(cors());
+app.use(allowCrossDomain);
 var flash = require("express-flash");
 app.use(flash());
 
