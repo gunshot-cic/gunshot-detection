@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 let allowCrossDomain = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "example.com");
+  res.header("Access-Control-Allow-Origin", "asucic-gunshotdetection.com");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
 
