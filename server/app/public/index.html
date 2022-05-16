@@ -147,7 +147,7 @@
           </div>
           <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
             <div
-              id="gunshot-sub"
+              id="gunshot-unsub"
               class="toast hide"
               role="alert"
               aria-live="assertive"
@@ -164,6 +164,28 @@
               </div>
               <div class="toast-body">
                 Unsubscribed from gunshot notifications.
+              </div>
+            </div>
+          </div>
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div
+              id="gunshot-unsub1"
+              class="toast hide"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              <div class="toast-header">
+                <strong class="me-auto">Failure!</strong>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="toast-body">
+                This mobile number is not subscribed.
               </div>
             </div>
           </div>

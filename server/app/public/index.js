@@ -2,6 +2,7 @@ const subBtn = document.getElementById("subscribe-button");
 const unsubBtn = document.getElementById("unsubscribe-button");
 const subToast = document.getElementById("gunshot-sub");
 const unsubToast = document.getElementById("gunshot-unsub");
+const unsubToast1 = document.getElementById("gunshot-unsub1");
 
 subBtn.addEventListener("click", (event) => {
   subscribe();
@@ -55,8 +56,13 @@ function unsubscribe() {
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
-      let unsubAlert = new bootstrap.Toast(unsubToast); //inizialize it
-      unsubAlert.show();
+      if (json.success) {
+        let unsubAlert = new bootstrap.Toast(unsubToast); //inizialize it
+        unsubAlert.show();
+      } else {
+        let unsubAlert1 = new bootstrap.Toast(unsubToast1); //inizialize it
+        unsubAlert.show();
+      }
     });
 
   el.value = "";
