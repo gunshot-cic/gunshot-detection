@@ -67,6 +67,7 @@ let locations = [];
 
 function getLocations() {
   fetch("https://asucic-gunshotdetection.com:8080/api/incidents/locations", {
+    mode: "cors",
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
