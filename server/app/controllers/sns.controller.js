@@ -64,6 +64,8 @@ exports.unsubscribe = (req, res) => {
       });
     } else {
       console.log("\nSuccessfully got item from table");
+      console.log(data);
+
       res.json({
         success: true,
         item: data.Item,
