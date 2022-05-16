@@ -20,7 +20,7 @@ function subscribe() {
     number: number,
   };
 
-  fetch("http://localhost:8080/api/sns/subscribe", {
+  fetch("https://asucic-gunshotdetection.com:8080/api/sns/subscribe", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -33,6 +33,8 @@ function subscribe() {
       let subAlert = new bootstrap.Toast(subToast); //inizialize it
       subAlert.show();
     });
+
+  el.value = "";
 }
 
 function unsubscribe() {
@@ -43,7 +45,7 @@ function unsubscribe() {
     number: number,
   };
 
-  fetch("http://localhost:8080/api/sns/unsubscribe", {
+  fetch("https://asucic-gunshotdetection.com:8080/api/sns/unsubscribe", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -56,4 +58,6 @@ function unsubscribe() {
       let subAlert = new bootstrap.Toast(unsubToast); //inizialize it
       subAlert.show();
     });
+
+  el.value = "";
 }
