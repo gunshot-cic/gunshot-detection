@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: "https://asucic-gunshotdetection.com:8080/",
+    origin: "*",
   })
 );
 var flash = require("express-flash");

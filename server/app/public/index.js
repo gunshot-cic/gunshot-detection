@@ -66,7 +66,7 @@ let markers = [];
 let locations = [];
 
 function getLocations() {
-  fetch("http://localhost:8080/api/incidents/locations", {
+  fetch("https://asucic-gunshotdetection.com:8080/api/incidents/locations", {
     method: "GET",
   })
     .then((response) => response.json())
