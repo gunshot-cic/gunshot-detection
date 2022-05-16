@@ -63,38 +63,40 @@ exports.unsubscribe = (req, res) => {
         message: err,
       });
     } else {
-      console.log("\nSuccessfully got item from table");
-      console.log(data);
+      if (data) {
+        console.log("\nSuccessfully got item from table");
 
-      res.json({
-        success: true,
-        item: data.Item,
-      });
-      subscriptionArn = data.Item.subscription_arn;
-      let params1 = {
-        SubscriptionArn: subscriptionArn,
-      };
-      sns.unsubscribe(params1, function (err, data) {
-        if (err) console.log("\n", err, err.stack);
-        else {
-          console.log("\nsuccessfully unsubscribed from topic");
-          docClient.delete(params, function (err, data) {
-            if (err) {
-              console.log("\n", err);
-              console.log("\nfailed to remove item from table");
-              res.json({
-                success: false,
-                message: err,
-              });
-            } else {
-              console.log("\nSuccessfully removed item from table");
-              res.json({
-                success: true,
-              });
-            }
-          });
-        }
-      });
+        subscriptionArn = data.Item.subscription_arn;
+        let params1 = {
+          SubscriptionArn: subscriptionArn,
+        };
+        sns.unsubscribe(params1, function (err, data) {
+          if (err) console.log("\n", err, err.stack);
+          else {
+            console.log("\nsuccessfully unsubscribed from topic");
+            docClient.delete(params, function (err, data) {
+              if (err) {
+                console.log("\n", err);
+                console.log("\nfailed to remove item from table");
+                res.json({
+                  success: false,
+                  message: err,
+                });
+              } else {
+                console.log("\nSuccessfully removed item from table");
+                res.json({
+                  success: true,
+                });
+              }
+            });
+          }
+        });
+      } else {
+        res.json({
+          success: false,
+          message: "That number does not exist in the table",
+        });
+      }
     }
   });
 };
